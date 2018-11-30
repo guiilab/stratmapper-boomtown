@@ -388,14 +388,14 @@ class Provider extends Component {
                 xScale: (x) => {
                     const scale = scaleLinear()
                         .domain([this.state.coordinateRange.x.min, this.state.coordinateRange.x.max])
-                        .range([this.state.mapPaddingX, this.state.windowSettings.width - this.state.mapPaddingX])
+                        .range([0, this.state.windowSettings.width])
                     return scale(x)
                 },
 
                 yScale: (y) => {
                     const scale = scaleLinear()
                         .domain([this.state.coordinateRange.y.min, this.state.coordinateRange.y.max])
-                        .range([this.state.windowSettings.width - this.state.mapPaddingY, this.state.mapPaddingY])
+                        .range([this.state.windowSettings.width, 0])
                     return scale(y)
                 },
 
@@ -520,9 +520,9 @@ class Provider extends Component {
                         x += 15
                     }
                     if ((Math.abs(y) + (tooltipHeight)) < (this.state.windowSettings.height)) {
-                        y -= tooltipHeight * .2
+                        y -= tooltipHeight * .6
                     } else {
-                        y -= tooltipHeight * 1.2
+                        y -= tooltipHeight * 1.5
                     }
                     this.setState({
                         tooltipPosition: [x, y]

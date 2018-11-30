@@ -5,7 +5,7 @@ import { zoom, select, event, scaleLog, easeLinear, zoomIdentity } from 'd3'
 import { Context } from '../Provider.js'
 import EventIcon from './EventIcon/EventIcon.js';
 import UnitLine from './UnitLine/UnitLine.js'
-import Background from '../../../img/dotamini3.jpg';
+import Background from '../../../img/boomtown_cropped2.jpg';
 
 class Map extends PureComponent {
     constructor(props) {
@@ -42,7 +42,7 @@ class Map extends PureComponent {
     centerMap() {
         let zoomID = zoomIdentity
         zoomID.k = .5
-        zoomID.x = this.props.state.mapSettings.width / 2
+        zoomID.x = this.props.state.mapSettings.width
         select(this.refs.mapsvg)
             .transition()
             .duration(200)

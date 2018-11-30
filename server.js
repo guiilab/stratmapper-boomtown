@@ -22,7 +22,7 @@ app.use(bodyParser.json({
     limit: '500mb'
 }));
 
-const mongoUrl = 'mongodb://admin:M4pTh3W0rld@ds121373.mlab.com:21373/stratmap_dota_dev';
+const mongoUrl = 'mongodb://admin:M4pTh3W0rld@ds235243.mlab.com:35243/stratmapper_boomtown'
 
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUrl, {
