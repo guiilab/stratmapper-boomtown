@@ -164,6 +164,7 @@ class Provider extends Component {
             },
             matchId: data[0].match_id,
             playbackRatio: playbackRatio,
+            testCondition: data[0].test_condition,
             timelineSettings: {
                 height: timelineHeight
             },
