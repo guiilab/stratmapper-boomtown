@@ -71,7 +71,7 @@ class GlobalTimeline extends PureComponent {
                                 chartWidth={chartWidth}
                                 activateContextMenu={this.activateContextMenu}
                                 disableContextMenu={this.disableContextMenu}
-                                key={label.description}
+                                key={label.id}
                             />
                         )
                     }) : null}

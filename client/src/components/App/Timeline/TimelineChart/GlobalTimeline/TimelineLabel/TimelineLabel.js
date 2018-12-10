@@ -22,13 +22,14 @@ class TimelineLabel extends Component {
             let author = nextProps.label['author'].toLowerCase()
             let description = nextProps.label['description'].toLowerCase()
             nextProps.state.labelSearch.forEach((d) => {
+                d = d.toLowerCase()
                 if ((title.indexOf(d) > -1) || (author.indexOf(d) > -1) || (description.indexOf(d) > -1)) {
                     searchArray.push(true)
                 } else {
                     searchArray.push(false)
                 }
             })
-            if (!searchArray.includes(false)) {
+            if (searchArray.includes(true)) {
                 return {
                     highlight: true
                 }

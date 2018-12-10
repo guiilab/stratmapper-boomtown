@@ -13,7 +13,7 @@ class TestCondition extends Component {
             <div className="test-condition-container">
                 {Object.keys(testCondition).map((d) => {
                     return (
-                        <div className="test-element">
+                        <div className="test-element" key={d}>
                             <TestConditionKey title={d} />
                             <TestConditionValue value={testCondition[d]} />
                         </div>
