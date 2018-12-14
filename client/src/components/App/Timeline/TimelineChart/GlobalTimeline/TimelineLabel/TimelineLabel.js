@@ -51,7 +51,7 @@ class TimelineLabel extends Component {
         return null
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         const { zoomTransform } = this.props;
         const { timestampRange } = this.props.state;
         if ((zoomTransform !== prevProps.zoomTransform) || (timestampRange !== prevProps.state.timestampRange)) {

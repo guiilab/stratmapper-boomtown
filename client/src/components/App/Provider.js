@@ -523,7 +523,7 @@ class Provider extends Component {
                     if ((Math.abs(y) + (tooltipHeight)) < (this.state.windowSettings.height)) {
                         y -= tooltipHeight * .6
                     } else {
-                        y -= tooltipHeight * 1.5
+                        y -= tooltipHeight * 1.8
                     }
                     this.setState({
                         tooltipPosition: [x, y]

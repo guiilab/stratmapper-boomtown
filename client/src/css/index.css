@@ -91,7 +91,7 @@ h3 {
     border: black 1px solid;
     border-right: none;
     position: absolute;
-    bottom: 350px;
+    bottom: 300px;
     right: 0;
     transition: var(--slow-trans);
     padding: 1rem;
@@ -281,7 +281,7 @@ h3 {
 
 .test-condition-container {
     width: 230px;
-    height: 170px;
+    height: 200px;
     border: 1px black solid;
     padding: 1rem;
     margin: 1rem auto;
@@ -638,4 +638,31 @@ h3 {
     border: 1px black solid;
     background-color: white;
     transition: var(--fast-trans);
+}
+
+.chat-container {
+    width: 350px;
+    height: 200px;
+    position: absolute;
+    border: 1px black solid;
+    top: 10px;
+    right: 10px;
+}
+
+.chat-title {
+    padding: .3rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: grey;
+    border-bottom: 1px solid black;
+}
+
+.chat-window {
+    padding: .5rem;
+    background-color: lightgrey;
+}
+
+.chat-from, .chat-to {
+    margin-bottom: .3rem;
 }
