@@ -119,7 +119,7 @@ class ContextMenu extends PureComponent {
                     </div>
                     <div className="label-title-container">
                         <div className="label-title">
-                            <input className="edit-label-input" edit-data-label="title" placeholder="Title" type="text" maxLength={20} value={this.state.title} onChange={(e) => this.handleChange(e)} />
+                            <input className="edit-label-input" edit-data-label="title" placeholder="Title" type="text" maxLength={30} value={this.state.title} onChange={(e) => this.handleChange(e)} />
                         </div>
                         <div className="label-author">
                             <input className="edit-label-input" edit-data-label="author" placeholder="Author Name" type="text" value={this.state.author} onChange={(e) => this.handleChange(e)} />
