@@ -79,11 +79,24 @@ app.post('/api/events', function (req, res) {
 })
 
 app.post('/api/labels', function (req, res) {
-    LabelModel
-        .find({ match: req.body.match })
-        .exec(function (err, label) {
-            return res.send(label)
-        })
+    if (req.body.activeLabelTypes) {
+        LabelModel
+            .find({
+                match: req.body.match,
+                title: { $in: req.body.activeLabelTypes }
+            })
+            .exec(function (err, label) {
+                return res.send(label)
+            })
+    } else {
+        LabelModel
+            .find({
+                match: req.body.match
+            })
+            .exec(function (err, label) {
+                return res.send(label)
+            })
+    }
 })
 
 app.post('/api/add-label', function (req, res) {
@@ -119,7 +132,6 @@ app.post('/api/edit-label', function (req, res) {
         .findOne({
             id: req.body.id
         }, function (err, label) {
-            console.log(label)
             if (err) return handleError(err);
             label.set({
                 title: req.body.title,

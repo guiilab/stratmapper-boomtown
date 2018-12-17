@@ -224,7 +224,7 @@ class Provider extends Component {
         return unitEventsFiltered.filter(event => (this.state.selectedEventTypes.includes(event.event_type)))
     }
 
-    getLabels = async () => {
+    getInitLabels = async () => {
         const response = await fetch('/api/labels', {
             method: 'POST',
             headers: {
@@ -233,6 +233,35 @@ class Provider extends Component {
             },
             body: JSON.stringify({
                 match: this.state.currentMatch
+            })
+        });
+        const body = await response.json();
+
+        if (response.status !== 200) {
+            throw Error(body.message)
+        }
+        let labelTypes = []
+        body.forEach(l => {
+            if (!labelTypes.includes(l.title))
+                labelTypes.push(l.title)
+        })
+        this.setState({
+            labelTypes: [...labelTypes],
+            activeLabelTypes: [...labelTypes],
+            labels: [...body]
+        })
+    }
+
+    getLabels = async () => {
+        const response = await fetch('/api/labels', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                match: this.state.currentMatch,
+                activeLabelTypes: [...this.state.activeLabelTypes]
             })
         });
         const body = await response.json();
@@ -319,6 +348,10 @@ class Provider extends Component {
                     }
                 },
 
+                getLoadInitLabels: () => {
+                    this.getInitLabels()
+                },
+
                 getLoadLabels: () => {
                     this.getLabels()
                 },
@@ -333,6 +366,12 @@ class Provider extends Component {
                     } else if (this.state.activeLabel) {
                         alert('Please deactivate current label before adding a new one.')
                         return 'failure';
+                    }
+                    if (!this.state.labelTypes.includes(label.title)) {
+                        this.setState(prevState => ({
+                            labelTypes: [...prevState.labelTypes, label.title],
+                            activeLabelTypes: [...prevState.activeLabelTypes, label.title]
+                        }))
                     }
                     let event_ids = [];
                     this.state.unitEventsFiltered.forEach((event) => event_ids.push(event.node_id))
@@ -442,6 +481,23 @@ class Provider extends Component {
                             selectedUnits: [...this.state.unitsAll],
                             selectedEventTypes: [...this.state.events.timeline]
                         })
+                    }
+                },
+
+                updateActiveLabelTypes: (labelType) => {
+                    let array = [...this.state.activeLabelTypes]
+                    let index = array.indexOf(labelType)
+                    if (index !== -1) {
+                        array.splice(index, 1);
+                        this.setState({
+                            activeLabelTypes: [...array]
+                        }, () => this.getLabels());
+                    } else {
+                        let array = [...this.state.labelTypes]
+                        array.push(labelType)
+                        this.setState({
+                            activeLabelTypes: [...array]
+                        }, () => this.getLabels());
                     }
                 },
 

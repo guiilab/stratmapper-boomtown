@@ -14,7 +14,7 @@ class GlobalTimeline extends PureComponent {
     }
 
     componentDidMount() {
-        this.context.getLoadLabels()
+        this.context.getLoadInitLabels()
     }
 
     activateContextMenu = (e) => {
