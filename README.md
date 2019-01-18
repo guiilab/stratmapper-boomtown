@@ -36,4 +36,4 @@ Both are stored in a MongoDB instance on MLab. To update this endpoint, edit the
 ### License
 This software is patented and owned by [Truong-Huy D. Nguyen](https://github.com/truonghuy), [Magy Seif El-Nasr](https://camd.northeastern.edu/faculty/magy-seif-el-nasr/), [Andy Bryant](https://github.com/andymbryant), and [Northeastern University](https://www.khoury.northeastern.edu/).
 
-All rights reserved. Any use is forbidden without express written permission from the owners.
+All rights reserved. Any distribution is forbidden without express written permission from the owners.
