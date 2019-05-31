@@ -83,6 +83,7 @@ app.post('/api/labels', function (req, res) {
         LabelModel
             .find({
                 match: req.body.match,
+                author: 'Jimmy',
                 title: { $in: req.body.activeLabelTypes }
             })
             .exec(function (err, label) {
