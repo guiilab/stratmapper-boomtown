@@ -92,7 +92,8 @@ app.post('/api/labels', function (req, res) {
     } else {
         LabelModel
             .find({
-                match: req.body.match
+                match: req.body.match,
+                author: 'Jimmy'
             })
             .exec(function (err, label) {
                 return res.send(label)
